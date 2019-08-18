@@ -1,4 +1,11 @@
-import win32com.client
+import sys, win32com.client
+from UiGraphicsView import Ui_MainWindow
+from PyQt5 import QtGui, QtWidgets, QtCore
+
+class MyWindow(QtWidgets.QMainWindow, Ui_MainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
 
 class WordAuto:
     def __init__(self, templeteFile=None):
@@ -30,4 +37,9 @@ def main():
     wa = WordAuto()
     wa.wordDoc.Content.Text = "Hello"
 
-main()
+if __name__ == "__main__":
+        app = QtWidgets.QApplication(sys.argv)
+        # view = MyView()
+        ui = MyWindow()
+        ui.show()
+        sys.exit(app.exec_())
